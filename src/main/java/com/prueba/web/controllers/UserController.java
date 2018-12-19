@@ -19,18 +19,23 @@ public class UserController{
 		return userRepository.findAll();
 	}
 	
-	
+	/*
+	//agregar, registrar
 	@RequestMapping(method=RequestMethod.POST, value="/users")
 	public UserModel save (UserModel user) {
 		userRepository.save(user);
 		return user;
 	}
+	*/
 	
+	//busca usuario, vista
 	@RequestMapping(method=RequestMethod.GET, value="/users/{id}")
 	public Optional<UserModel> show(@PathVariable String id){
 		return userRepository.findById(id);
 	}
 	
+	
+	//editar
 	@RequestMapping(method=RequestMethod.PUT, value="/users/{id}")
 	public UserModel update(@PathVariable String id, UserModel user) {
 		Optional<UserModel> optUser = userRepository.findById(id);

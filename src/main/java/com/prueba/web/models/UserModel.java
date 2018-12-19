@@ -36,8 +36,8 @@ public class UserModel /*implements UserDetails*/ {
 	private boolean enabled;
 	//private @JsonIgnore String password;
 	private String password;
-	@DBRef
-	private Set<Role> roles;
+	//@DBRef
+	//private Set<Role> roles;
 	
 	/*
 	public void setPassword(String password) {

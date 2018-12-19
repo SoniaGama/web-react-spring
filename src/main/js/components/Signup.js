@@ -50,19 +50,6 @@ class Signup extends Component {
 	}
 	
 	
-	onSubmit = (e) => {
-		e.preventDefault();
-		
-		const {name, address, city, postalCode, phone} = this.state.user;
-		
-		axios.put('/users/' + this.props.match.params.id, {name, address, city, postalCode, phone})
-			.then(result => {
-				this.props.history.push('/show/'+this.props.match.params.id)
-			});
-	}
-	
-	
-	
 	//detecta cambio de estado en el formulario
 	onChange = (e) => {
 		const state = this.state;

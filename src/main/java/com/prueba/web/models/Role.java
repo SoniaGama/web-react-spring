@@ -1,5 +1,5 @@
 package com.prueba.web.models;
-
+/*
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.index.IndexDirection;
@@ -33,3 +33,4 @@ public class Role {
         this.role = role;
     }
 }
+*/

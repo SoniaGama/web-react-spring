@@ -55,6 +55,7 @@ public class UserSecurity implements UserDetailsService{//ENCONTRAR Y AUTENTITCA
 	    	List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
 	    			
 	        //return buildUserForAuthentication(user, authorities);
+	    	
 	    	//CONECTAR USUARIO SPRING CON USUARIO MONGO DB
 	    	return new User (user.getEmail(), user.getPassword(), authorities); 
 	    } else {

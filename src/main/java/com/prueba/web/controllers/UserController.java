@@ -15,10 +15,11 @@ public class UserController{
 	
 	
 	@RequestMapping(method=RequestMethod.GET, value="/users")
-	public Iterable<User> user(){
+	public Iterable<UserModel> user(){
 		return userRepository.findAll();
 	}
 	
+
 	/*
 	//agregar, registrar
 	@RequestMapping(method=RequestMethod.POST, value="/users")

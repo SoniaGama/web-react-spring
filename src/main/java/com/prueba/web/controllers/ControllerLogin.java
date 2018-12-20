@@ -1,4 +1,5 @@
 package com.prueba.web.controllers;
+//CONTROLADOR DE VISTAS
 
 import com.prueba.web.models.UserModel;
 import com.prueba.web.services.UserSecurity;

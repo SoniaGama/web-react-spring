@@ -1,5 +1,6 @@
 package com.prueba.web.config;
 
+//CONFIGURACION DE SEGURIDAD
 import com.prueba.web.services.UserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,13 +25,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	CustomizeAuthentication customizeAuthentication;
 	
+	//DEFINE lOS USER DETAILS
 	@Bean
 	public UserDetailsService mongoUserDetails() {
 	    return new UserSecurity();
 	}
 	
-	@Override 
+	//UserSecurity userSecurity;
+	
+	@Override //CODIFICAR CONTRASEÑAS
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		//ESPECIFICA QUE QUEREMOS USAR NUESTRA CONFIGURACION
 	    UserDetailsService userDetailsService = mongoUserDetails();
 	    auth
 	        .userDetailsService(userDetailsService)
@@ -41,18 +46,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	    http
-	        .authorizeRequests()
+	        .authorizeRequests()//RESTRINGIR ACESO A url's
 	            .antMatchers("/").permitAll()
 	            .antMatchers("/login").permitAll()
 	            .antMatchers("/signup").permitAll()
 	            .antMatchers("/dashboard/**").hasAuthority("ADMIN").anyRequest()
-	            .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthentication)
+	            .authenticated()
+	            .and()
+	        .csrf().disable().formLogin().successHandler(customizeAuthentication)
+	            //CSRF USUARIO Y CONTRASEÑA PREDEFINIDOS
+	        	//INICIO DE SESION BASADO EN FORMMULARIOS
 	            .loginPage("/login").failureUrl("/login?error=true")
 	            .usernameParameter("email")
 	            .passwordParameter("password")
-	            .and().logout()
+	            .and()
+	        .logout()
 	            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-	            .logoutSuccessUrl("/").and().exceptionHandling();
+	            .logoutSuccessUrl("/")
+	            .and()
+	        .exceptionHandling();
 	}
 	
 	/*

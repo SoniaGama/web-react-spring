@@ -1,5 +1,7 @@
 package com.prueba.web.config;
 
+//CONTROLADOR DE VISTAS
+/*
 //CONFIGURACIÓN MVC
 import org.springframework.context.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,3 +26,4 @@ public class ConfigWeb implements WebMvcConfigurer {
 	    
 	}
 }
+*/

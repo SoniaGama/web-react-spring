@@ -1,4 +1,5 @@
 package com.prueba.web.controllers;
+//CONTROLADOR DE VISTAS
 
 import com.prueba.web.models.UserModel;
 import com.prueba.web.services.UserSecurity;
@@ -34,9 +35,16 @@ public class ControllerLogin {
 	    ModelAndView modelAndView = new ModelAndView();
 	    UserModel user = new UserModel();
 	    modelAndView.addObject("user", user);
-	    modelAndView.setViewName("signup");
+	    modelAndView.setViewName("signup");//regresa al login
 	    return modelAndView;
 	}
+	
+	/*
+	@RequestMapping(method=RequestMethod.POST, value="/users")
+	public UserModel save (UserModel user) {
+		userRepository.save(user);
+		return user;
+	}*/
 	
 	
 	//VISUALIZACIÓN NUEVO USUARIO
@@ -69,8 +77,10 @@ public class ControllerLogin {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    UserModel user = userSecurity.findUserByEmail(auth.getName());
 	    modelAndView.addObject("currentUser", user);
-	    modelAndView.addObject("fullName", "Welcome " + user.getName());
+	   /* 
+	    modelAndView.addObject("fullName", "Welcome " + user.getName());	    
 	    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+	    */
 	    modelAndView.setViewName("dashboard");
 	    return modelAndView;
 	}

@@ -25,50 +25,18 @@ class Signup extends Component {
 		console.log(this.state);
 		
 		axios.post('./users', { name, address, city, phone, email, password })
-			.then(result => this.props.history.push("/"));
+			//.then(result => this.props.history.push("/"));
+			.then(result => console.log(this.props.history));
 	}
-	
-	
-	onSubmit = (e) => {
-		e.preventDefault();
-		const {name, address, city, phone, email, password} = this.state;
-				
-		console.log(e);
-		console.log(this.state);
-		
-		axios.post('./users', { name, address, city, phone, email, password })
-			.then(result => this.props.history.push("/"));
-	}
-	
-	
-	componentDidMount(){
-		axios.get('/users/' +  this.props.match.params.id)
-			.then(response => {
-				this.setState({user: response.data});
-				console.log(this.state.user);
-			});
-	}
-	
+
 	
 	//detecta cambio de estado en el formulario
 	onChange = (e) => {
 		const state = this.state;
 		state[e.target.name] = e.target.value;
 		this.setState({state});	
-		
-		console.log(e);
-		console.log(this.state);
 	}
-	/*
-	componentDidMount(){
-		axios.get('/users/' + this.props.match.params.id)
-			.then(response => {
-				console.log(response);
-				this.setState({user: response.data});
-				console.log(this.state.user);
-			});
-	}
-	*/
+
 	render(){
 		const {name, address, city, phone, email, password} = this.state;
 		

@@ -11,66 +11,38 @@ class Login extends Component {
 		};
 	}
 	
-	//envia el formulario
+	//envia los datos del formulario a la base de datos
 	onSubmit = (e) => {
 		e.preventDefault();
 		const {email, password} = this.state;
-		console.log(this.state);
 		axios.post('/users/', { email, password })
-			.then(result => console.log(result));
+			.then(result => onSuccess(result))
+				.catch(error => console.log(error));
 	}
 	
-	//trae los datos de la base de satos
-	componentDidMount(){
-		axios.get('/users/' + this.props.match.params.id)
-			.then(response => {
-				console.log(response);
-				this.setState({user: response.data});
-				console.log(this.state.user);
-			});
-	}
-	
-	
-	//cambios de estado
 	onChange = (e) => {
 		const state = this.state;
 		state[e.target.name] = e.target.value;
-		this.setState({state});		
+		this.setState(state);
 	}
-	
-		
+
   render() {
     return (    		
     	const {email, password} = this.state;
     		
     	<h1 class="h3 mb-3 font-weight-normal">Sign in</h1>    		
-    	<form class="form-signin"/* th:action="@{/login}" method="post"*/>
-            
-           
-            /*            
-            if("${param.error}"){
-            	<div>
-                	Invalid
-                </div>
-            }
-           
-            if("${param.logout}"){
-            	<div>
-                	You have been logged out.
-                </div>
-            }             
-            */
-            
+    	<form class="form-signin" onSubmit={this.onSubmit}/>
+
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required/>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" value={email} onChange={this.onChange} required/>
             		"
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required/>
+            <input type="password" name="password" id="inputPassword" class="form-control" value={password} onChange={this.onChange} placeholder="Password" required/>
             		
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
         
-        <form class="form-signin"/* th:action="@{/signup}" method="get"*/>
+        <form class="form-signin">
             <Link to="/signup"><button class="btn btn-md btn-success btn-block" type="Submit">Signup Here</button></Link>
         </form>
     );

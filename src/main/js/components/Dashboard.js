@@ -20,13 +20,13 @@ class Dashboard extends Component {
 				console.log(this.state.user);
 			});
 	}
-	
+/*
 	delete(id){
 		console.log(id);
 		axios.delete('/users/' + id)
 			.then(result => this.props.history.push("/"));
 	}
-	
+*/	
 	render(){
 		return(
 				<div class="container" layout:fragment="content">
@@ -40,7 +40,7 @@ class Dashboard extends Component {
 						
 						<div class="panel-body">
 						
-							<h4><Link to='/'>Users List</Link></h4>
+							<h4>User:</h4>
 							
 							<dl>
 								<dt>Name:</dt>
@@ -60,8 +60,8 @@ class Dashboard extends Component {
 							</dl>
 							
 							<Link to={`/edit/${this.state.user.id}`} class="btn btn-success">Edit</Link>
-							<button onClick={this.delete.bind(this, this.state.user.id)} class="btn btn-danger">Delete</button>
-							<button><Link to='/'>Salir</Link></button>
+							/*<button onClick={this.delete.bind(this, this.state.user.id)} class="btn btn-danger">Delete</button>*/
+							/*<button><Link to='/'>Salir</Link></button>*/
 						</div>						
 						
 					</div>				

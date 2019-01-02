@@ -52,7 +52,7 @@ public class UserSecurity implements UserDetailsService{//ENCONTRAR Y AUTENTITCA
 	    UserModel user = userRepository.findByEmail(email);
 	    if(user != null) {
 	        //List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-	    	List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
+	    	List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ADMIN"));//user por ADMIN
 	    			
 	        //return buildUserForAuthentication(user, authorities);
 	    	

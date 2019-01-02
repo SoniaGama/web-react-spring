@@ -1,5 +1,5 @@
 package com.prueba.web.controllers;
-
+/*
 
 import com.prueba.web.models.UserModel;
 import com.prueba.web.repositories.UserRepository;
@@ -20,16 +20,15 @@ public class UserController{
 	}
 	
 
-	/*
 	//agregar, registrar
 	@RequestMapping(method=RequestMethod.POST, value="/users")
 	public UserModel save (UserModel user) {
 		userRepository.save(user);
 		return user;
 	}
-	*/
+
 	
-	//busca usuario, vista
+	//Vista por usuario ID
 	@RequestMapping(method=RequestMethod.GET, value="/users/{id}")
 	public Optional<UserModel> show(@PathVariable String id){
 		return userRepository.findById(id);
@@ -67,3 +66,4 @@ public class UserController{
 	
 	
 }
+*/
